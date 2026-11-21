@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fa-IR" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0f766e">
+    <title>پرسش‌نامه چهارگزینه‌ای</title>
+    <link rel="stylesheet" href="css/output.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body class="antialiased text-slate-800">
+    <section class="w-[85%] 2xs:w-[80%] xs:w-[70%] md:w-[60%] lg:w-[55%] border-custom max-w-xl overflow-hidden rounded-2xl bg-white shadow-2xl mx-auto" aria-labelledby="quiz-title">
+        <header class="px-5 pt-4 sm:px-8">                                      <!-- عنوان پرسش نامه و نوار پیشرفت -->
+            <div class="flex items-center justify-between">                                    <!-- عنوان پرسش نامه --> 
+                <h1 id="quiz-title" class="text-base sm:text-xl font-bold text-slate-800">پرسش‌نامه 20 در 20 :</h1>
+                <span id="question-counter" class="rounded-full bg-teal-50 px-3 py-1 text-[13px] sm:text-sm lg:text-[15px] font-semibold text-teal-700" aria-live="polite">
+                    <!-- data from loaded js -->
+                </span>
+            </div>
+            <div id="progressbar" class="mt-4 sm:mt-5 h-1.5 lg:h-2 overflow-hidden rounded-full bg-slate-100" aria-label="پیشرفت پرسش‌نامه" aria-valuemin="0" aria-valuemax="100" aria-valuenow="10" role="progressbar">                       <!-- نوار پیشرفت تعداد پرسش ها -->
+                <div id="question-progress" class="h-full rounded-full bg-teal-600 transition-all duration-300 "> </div>
+            </div>
+        </header>
+
+        <hr class="w-full border-t-2 lg:border-t-3 my-3 sm:my-6 text-slate-200">
+
+        <div class="px-5 sm:px-8">
+            <div class="mb-4 lg:mb-5 flex items-start justify-between">                 <!-- آیکن و متن زمان باقی مانده، ثانیه شمار-->          
+                <span class="flex-row-custom gap-1 font-medium text-slate-500">              <!-- آیکن و متن زمان باقی مانده-->   
+                    <svg class="w-4 h-4 xl:w-5 xl:h-5 shrink-0 text-teal-600" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">                      
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+                    </svg>                     
+                    <p class="text-[13px] sm:text-sm xl:text-[15px]"> زمان باقی‌مانده : </p>
+                </span>
+                <p id="timer-text" class="text-sm xl:text-[15px] font-bold tabular-nums text-teal-700" aria-live="off">             <!-- ثانیه شمار -->
+                    <!-- data from loaded js -->
+                </p>          
+            </div>
+
+            <div class="mb-5 h-1.5 lg:h-2 overflow-hidden rounded-full bg-slate-100">            <!-- نوار پیشرفت زمان باقی مانده -->
+                <div id="timer-progress" class="h-full rounded-full bg-amber-500"></div>
+            </div>
+
+            <div class="flex justify-start items-start text-sm xs:text-sm lg:text-base gap-1 mb-4 font-bold">      <!-- شماره و متن سوال -->  
+                <span id="question-number" class="mt-0.5 sm:mt-1"></span>                                                    <!-- شماره سوال -->
+                <h2 id="question-text" class="leading-6 sm:leading-7 lg:leading-8 text-slate-800 sm:text-lg" aria-live="polite">                                                                                       <!-- متن سوال -->
+                    <!-- data from loaded js -->
+                </h2>       
+            </div>
+
+            <div id="options" class="flex-col-custom gap-2 lg:gap-3" aria-label="گزینه‌های پاسخ">                             <!-- گزینه های پاسخ --> 
+                <!-- data from loaded js -->
+            </div>
+
+            <div class="flex items-center justify-between rounded-xl bg-yellow-300 px-4 py-1 md:py-1.5 lg:py-3 mt-4 md:mt-6 lg:mt-7">  <!-- امتیاز شما -->
+                <div class="flex justify-start items-center gap-1.5 text-sm md:text-[15px] xl:text-base font-medium text-slate-600">
+                    <svg class="h-4 w-4 shrink-0 text-teal-600 -mt-0.5" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.563.563 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z">
+                        </path>
+                    </svg>
+                    <p> امتیاز شما: </p>
+                </div>
+                <strong id="score" class="text-base sm:text-lg font-bold tabular-nums text-teal-700" aria-live="polite"> </strong>
+            </div>
+        </div>
+
+        <hr class="w-full border-t-2 lg:border-t-3 my-3 sm:my-6 text-slate-200">
+
+        <footer id="footer-container" class="flex justify-between gap-1 px-3 xs:px-5 pb-2.5 2xs:pb-3 xs:pb-3.5 sm:pb-4 md:pb-4.5 sm:px-8"> <!-- دکمه ها -->
+            <!-- data from loaded js -->
+        </footer>
+    </section>
+
+    <div id="modal-screen" class="hidden flex-row-custom fixed inset-0 z-50 bg-slate-950/60 px-4 py-6 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="result-title">                                                                                  <!-- لایه تاریک -->
+        <section class="w-[94%] 2xs:w-[80%] xs:w-[70%] md:w-[60%] lg:w-[55%] max-w-xl max-h-[calc(100svh-3rem)] flex-col-custom mx-auto my-auto rounded-2xl px-3 py-6 shadow-2xl sm:p-8 overflow-y-auto overscroll-contain bg-white">                   <!-- مودال -->
+
+            <div class="w-12 h-12 xl:w-13.5 xl:h-13.5 flex-row-custom mx-auto text-xl lg:text-2xl mb-3 rounded-full bg-teal-100 text-teal-600">    <!-- لوگو -->
+                <svg class="w-6 h-6 lg:w-7 lg:h-7 xl:w-7.5 xl:h-7.5 text-sky-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <circle cx="12" cy="8" r="6"/>
+                    <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+                </svg>
+            </div>            
+
+            <h2 id="result-title" class="text-xl font-bold mb-5 text-slate-800"> پرسش‌نامه به پایان رسید </h2>          <!-- تیتر مودال -->
+
+            <hr class="w-full border-t-2 lg:border-t-3 mb-5 sm:mb-6 text-slate-200">
+
+            <div id="modal-results" class="w-full h-fit mb-6 flex-col-custom gap-3 text-sm whitespace-nowrap">              <!-- نتیجه پاسخ ها -->
+                <!-- data from loaded js -->
+            </div>
+
+            <div class="w-30 lg:w-35 flex-row-custom gap-1 lg:gap-2 mx-auto rounded-xl mb-4 text-sm px-2.5 py-2 text-nowrap bg-purple-500"> 
+                <p class="lg:text-[15px] text-white"> حداکثر امتیاز: </p>
+                <strong id="max-score" class="lg:font-bold lg:text-[17px] text-slate-800"> </strong>
+            </div>
+
+            <button type="button" id="modal-restart" class="w-full rounded-xl bg-teal-600 py-1.5 lg:py-2 xl:py-2.5 font-semibold xl:text-[17px] text-white transition hover:bg-teal-700"> شروع دوباره 
+            </button> 
+
+        </section>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

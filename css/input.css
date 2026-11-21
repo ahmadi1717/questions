@@ -1,0 +1,267 @@
+@import "tailwindcss";
+
+@theme {
+    --breakpoint-2xs: 27.5rem;
+    --breakpoint-xs: 33.75rem;
+    --breakpoint-sm: 40rem;
+    --breakpoint-md: 48rem;
+    --breakpoint-lg: 60.625rem;
+    --breakpoint-xl: 75rem;
+    --breakpoint-2xl: 96rem;
+}
+
+@font-face {
+    font-family: "QuizSans";
+    src: url("../fonts/Sans-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "QuizSans";
+    src: url("../fonts/Sans-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "QuizSans";
+    src: url("../fonts/Sans-DemiBold.ttf") format("truetype");
+    font-weight: 600;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "QuizSans";
+    src: url("../fonts/Sans-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-display: swap;
+}
+
+@layer base {
+    html {
+        font-family: "QuizSans", Tahoma, sans-serif;
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        min-height: 100svh;
+        box-sizing: border-box;
+        padding-block: 1rem;
+        margin: 0;
+        background: radial-gradient(circle at top right, #0f766e 0%, #064e4b 55%, #042f2e 100%); ;
+    }
+
+    button {
+        font: inherit;
+    }
+}
+
+@layer components {
+    .border-custom {
+        border: 1px solid rgb(255 255 255 / 0.35);
+    }
+
+    .flex-row-custom {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .flex-col-custom {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .option-btn {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 0.85rem;
+        background: #fff;
+        color: #334155;
+        text-align: right;
+        transition: border-color 160ms ease, background-color 160ms ease, color 160ms ease, transform 160ms ease;
+    }
+
+    .option-btn:not(:disabled):hover {
+        transform: translateY(-1px);
+        border-color: #0d9488;
+        background: #f0fdfa;
+    }
+
+    .option-btn:focus-visible , .action-btn:focus-visible , #modal-restart:focus-visible {
+        outline: 3px solid rgb(20 184 166 / 0.35);
+        outline-offset: 2px;
+    }
+
+    .option-number {
+        display: inline-flex;
+        width: 1.8rem;
+        height: 1.8rem;
+        flex: 0 0 auto;
+        align-items: center;
+        justify-content: center;
+        border-radius: 100%;
+        background: #cdced0;
+        color: #505d6e;
+        font-weight: 700;
+    }
+
+    .option-btn.is-correct {
+        border-color: #16a34a;
+        background: #f0fdf4;
+        color: #166534;
+    }
+
+    .option-btn.is-correct .option-number {
+        background: #dcfce7;
+        color: #15803d;
+    }
+
+    .option-btn.is-wrong {
+        border-color: #e11d48;
+        background: #fff1f2;
+        color: #9f1239;
+    }
+
+    .option-btn.is-wrong .option-number {
+        background: #ffe4e6;
+        color: #be123c;
+    }
+
+    .option-btn:disabled {
+        cursor: default;
+    }
+
+    #timer-progress.is-low {
+        background-color: #e11d48;
+    }
+}
+
+@media (max-height: 580px) {
+    body {
+        justify-content: flex-start;
+    }
+}
+
+#footer-container:has(#next.hidden) .action-btn {                                    /* دو دکمه قابل نمایش */
+    width: 43%;
+    font-size: 15px;
+}
+
+#footer-container:has(#next:not(.hidden)) .action-btn {                             /* سه دکمه قابل نمایش */
+    width: 33%;
+    font-size: 13px;
+}
+
+@media (min-width: 440px) {                                                               /* 2xs: 440px */
+    #footer-container:has(#next.hidden) .action-btn {
+        width: 43%;
+        font-size: 16px;
+    }
+
+    #footer-container:has(#next:not(.hidden)) .action-btn {
+        width: 32%;
+        font-size: 15px;
+    }
+}
+
+@media (min-width: 540px) {                                                                 /* xs: 540px */
+    #footer-container:has(#next.hidden) .action-btn {
+        width: 40%;
+    }
+
+    #footer-container:has(#next:not(.hidden)) .action-btn {
+        width: 31%;
+    }
+}
+
+@media (min-width: 640px) {                                                                 /* sm: 640px */        
+    #footer-container:has(#next.hidden) .action-btn {
+        width: 36%;
+    }
+
+    #footer-container:has(#next:not(.hidden)) .action-btn {
+        width: 32%;
+    }
+}
+
+@media (min-width: 768px) {                                                                /* md: 768px */
+    #footer-container:has(#next.hidden) .action-btn {
+        width: 34%;
+    }
+
+    #footer-container:has(#next:not(.hidden)) .action-btn {
+        width: 32%;
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 970px) {                                                                /* lg: 970px */
+    #footer-container:has(#next.hidden) .action-btn {
+        width: 32%;
+    }
+
+    #footer-container:has(#next:not(.hidden)) .action-btn {
+        width: 30%;
+    }
+}
+
+@media (min-width: 1200px) {                                                                /* xl: 1200px */
+    #footer-container:has(#next.hidden) .action-btn {
+        width: 33%;
+        font-size: 17px;
+    }
+
+    #footer-container:has(#next:not(.hidden)) .action-btn {
+        width: 31%;
+        font-size: 17px;
+    }
+}
+
+@media (max-width: 439px) {
+    .border-custom {
+        border-radius: 1rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * , *::before , *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
+
+@media (max-height: 700px) {
+    body > section:first-of-type > header {
+        padding-top: 0.75rem;
+    }
+
+    body > section:first-of-type > hr {
+        margin-block: 0.5rem;
+    }
+
+    body > section:first-of-type #options {
+        gap: 0.5rem;
+    }
+
+    body > section:first-of-type #footer-container {
+        padding-bottom: 0.5rem;
+    }
+}
+
+
+
+
+
+/* npx @tailwindcss/cli -i ./css/input.css -o ./css/output.css --watch */
